@@ -21,7 +21,7 @@ interface OpenAccountFullProps {
 
 const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const { agentId, handleClose, stockList } = props;
-  const after20BusiDays = String(getNextKoreanBusinessDayYmdByUtcDate(new Date(), 20));
+  const after20BusiDays = String(getNextKoreanBusinessDayYmdByUtcDate(new Date(), 3));
   const after20BusiDate = new Date(
     after20BusiDays.slice(0, 4) + "-" + after20BusiDays.slice(4, 6) + "-" + after20BusiDays.slice(6),
   );
