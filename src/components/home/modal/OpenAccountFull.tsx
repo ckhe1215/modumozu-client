@@ -25,6 +25,7 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const after20BusiDate = new Date(
     after20BusiDays.slice(0, 4) + "-" + after20BusiDays.slice(4, 6) + "-" + after20BusiDays.slice(6),
   );
+  console.log(after20BusiDate, stockList?.at(0)?.proposal.needAt);
   // const after20BusiDate = getDateAfter20BusinessDays();
   // const after20BusiDateNormal = dayjs().add(26, "day");
   return (
