@@ -11,6 +11,7 @@ import { limitlessAgent } from "@/constants/agentInfo";
 import { StockInfoType } from "@/types";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import { getNextKoreanBusinessDayYmdByUtcDate } from "korean-business-day";
 
 interface OpenAccountFullProps {
   agentId: number;
@@ -20,8 +21,12 @@ interface OpenAccountFullProps {
 
 const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const { agentId, handleClose, stockList } = props;
-  const after20BusiDate = getDateAfter20BusinessDays();
-  const after20BusiDateNormal = dayjs().add(26, "day");
+  const after20BusiDays = String(getNextKoreanBusinessDayYmdByUtcDate(new Date(), 20));
+  const after20BusiDate = new Date(
+    after20BusiDays.slice(0, 4) + "-" + after20BusiDays.slice(4, 6) + "-" + after20BusiDays.slice(6),
+  );
+  // const after20BusiDate = getDateAfter20BusinessDays();
+  // const after20BusiDateNormal = dayjs().add(26, "day");
   return (
     <FullScreenModal visible={agentId > 0} setInvisible={handleClose}>
       <FullScreenModalDescription>
@@ -35,7 +40,7 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
         </p>
       </FullScreenModalDescription>
       {stockList
-        .filter((item) => dayjs(item.proposal.needAt) < after20BusiDateNormal)
+        .filter((item) => new Date(item.proposal.needAt) < after20BusiDate)
         .filter((item) => item.remainAgents.length === 0 && !item.nonRemainAgents.includes(agentId))
         .filter((item) => !item.nonRemainAgents.some((agent) => limitlessAgent.includes(agent)))
         .map((data) => (
