@@ -1,4 +1,4 @@
-import { getNextKoreanBusinessDayYmdByUtcDate } from "korean-business-day";
+import { getNextKoreanBusinessDayYmdByUtcDate } from "@/external";
 
 const getDateAfter20BusinessDays = () => {
   const after20BusiDays = String(getNextKoreanBusinessDayYmdByUtcDate(new Date(), 360));

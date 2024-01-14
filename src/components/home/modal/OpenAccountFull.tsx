@@ -9,9 +9,7 @@ import React, { FC } from "react";
 import UpcomingStock from "../UpcomingStock";
 import { limitlessAgent } from "@/constants/agentInfo";
 import { StockInfoType } from "@/types";
-import dayjs from "dayjs";
 import styled from "styled-components";
-import { getNextKoreanBusinessDayYmdByUtcDate } from "korean-business-day";
 
 interface OpenAccountFullProps {
   agentId: number;
