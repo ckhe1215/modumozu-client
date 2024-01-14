@@ -5,7 +5,7 @@ import { UpcomingStockItem } from "@/components/common/StockList";
 import { getBankName } from "@/util/getBankName";
 import getDateAfter20BusinessDays from "@/util/getDateAfter20BusinessDays";
 import getStoreUrl from "@/util/getStoreUrl";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import UpcomingStock from "../UpcomingStock";
 import { limitlessAgent } from "@/constants/agentInfo";
 import { StockInfoType } from "@/types";
@@ -19,13 +19,7 @@ interface OpenAccountFullProps {
 
 const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const { agentId, handleClose, stockList } = props;
-  const [after20BusiDate, setAfter20BusiDate] = useState<Date>();
-
-  useEffect(() => {
-    if (window) {
-      setAfter20BusiDate(getDateAfter20BusinessDays());
-    }
-  }, []);
+  // const after20BusiDate = getDateAfter20BusinessDays();
   // const after20BusiDateNormal = dayjs().add(26, "day");
   return (
     <FullScreenModal visible={agentId > 0} setInvisible={handleClose}>
@@ -39,8 +33,7 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
           개설을 막고 있어요.
         </p>
       </FullScreenModalDescription>
-      {after20BusiDate ? (
-        stockList
+      {/* {stockList
           .filter((item) => new Date(item.proposal.needAt) < after20BusiDate)
           .filter((item) => item.remainAgents.length === 0 && !item.nonRemainAgents.includes(agentId))
           .filter((item) => !item.nonRemainAgents.some((agent) => limitlessAgent.includes(agent)))
@@ -61,11 +54,7 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
                 onClick={() => window.open(getStoreUrl(data.proposal.agentId))}
               />
             </UpcomingStockItem>
-          ))
-      ) : (
-        <div></div>
-      )}
-
+          ))} */}
       <BottomButton width="100%" $font="BUTTON1_SEMIBOLD" onClick={() => window.open(getStoreUrl(agentId))}>
         계좌 개설
       </BottomButton>
