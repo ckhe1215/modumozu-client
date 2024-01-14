@@ -22,18 +22,18 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
   const after20BusiDate = getDateAfter20BusinessDays();
   // const after20BusiDateNormal = dayjs().add(26, "day");
   return (
-    <div suppressHydrationWarning>
-      <FullScreenModal visible={agentId > 0} setInvisible={handleClose}>
-        <FullScreenModalDescription>
-          <h2>
-            <span>{getBankName(agentId)}</span> 계좌를 개설하면
-            <br /> 다음 청약을 넣을 수 없어요.
-          </h2>
-          <p>
-            유안타증권, 한화투자증권, 교보증권 외 19개 증권사들은 20일 이내에 계좌를 개설한 내역이 있을 경우 증권사 계좌
-            개설을 막고 있어요.
-          </p>
-        </FullScreenModalDescription>
+    <FullScreenModal visible={agentId > 0} setInvisible={handleClose}>
+      <FullScreenModalDescription>
+        <h2>
+          <span>{getBankName(agentId)}</span> 계좌를 개설하면
+          <br /> 다음 청약을 넣을 수 없어요.
+        </h2>
+        <p>
+          유안타증권, 한화투자증권, 교보증권 외 19개 증권사들은 20일 이내에 계좌를 개설한 내역이 있을 경우 증권사 계좌
+          개설을 막고 있어요.
+        </p>
+      </FullScreenModalDescription>
+      <div suppressHydrationWarning>
         {stockList
           .filter((item) => new Date(item.proposal.needAt) < after20BusiDate)
           .filter((item) => item.remainAgents.length === 0 && !item.nonRemainAgents.includes(agentId))
@@ -56,11 +56,11 @@ const OpenAccountFull: FC<OpenAccountFullProps> = (props) => {
               />
             </UpcomingStockItem>
           ))}
-        <BottomButton width="100%" $font="BUTTON1_SEMIBOLD" onClick={() => window.open(getStoreUrl(agentId))}>
-          계좌 개설
-        </BottomButton>
-      </FullScreenModal>
-    </div>
+      </div>
+      <BottomButton width="100%" $font="BUTTON1_SEMIBOLD" onClick={() => window.open(getStoreUrl(agentId))}>
+        계좌 개설
+      </BottomButton>
+    </FullScreenModal>
   );
 };
 
