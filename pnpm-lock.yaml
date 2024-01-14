@@ -32,6 +32,9 @@ dependencies:
   eslint-config-next:
     specifier: 13.4.13
     version: 13.4.13(eslint@8.47.0)(typescript@5.1.6)
+  korean-business-day:
+    specifier: ^3.2.0
+    version: 3.2.0
   next:
     specifier: 13.4.13
     version: 13.4.13(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
@@ -9114,6 +9117,10 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
     dev: true
+
+  /korean-business-day@3.2.0:
+    resolution: {integrity: sha512-17K2fIVma5Bs8bTy0YG+B6twdeJZX+ZhNPPVL4uAQzSOIEEBZLRIoZVMVw4D3FTESJyo6ZmOYAEG/Jfdi8VEsw==}
+    dev: false
 
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
